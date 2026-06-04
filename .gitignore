@@ -23,7 +23,7 @@ Thumbs.db
 
 # Ignore TensorFlow Datasets directory
 # Ignore Jupyter Notebook Checkpoint Files
-runs/pong_dqn/
+runs/pong_dqn
 checkpoints/
 
 # Ignore TensorBoard logs
