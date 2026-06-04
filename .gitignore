@@ -1,0 +1,23 @@
+# Python/PyTorch
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+dist/
+build/
+*.egg-info/
+
+# Virtual Environment
+.venv/
+
+# Atari ROM data (assuming these are not needed in the repository)
+atari_roms/  # Example directory, adjust as needed. Replace with the actual location if different.
+
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Cline rules file
+.clinerules
