@@ -14,10 +14,14 @@ build/
 # Atari ROM data (assuming these are not needed in the repository)
 atari_roms/  # Example directory, adjust as needed. Replace with the actual location if different.
 
-
 # OS generated files
 .DS_Store
 Thumbs.db
 
 # Cline rules file
 .clinerules
+
+# Ignore TensorFlow Datasets directory
+# Ignore Jupyter Notebook Checkpoint Files
+runs/
+checkpoints/
