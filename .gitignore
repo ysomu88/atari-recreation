@@ -21,10 +21,10 @@ Thumbs.db
 # Cline rules file
 .clinerules
 
-# Ignore TensorFlow Datasets directory
-# Ignore Jupyter Notebook Checkpoint Files
-runs/pong_dqn
+# Training outputs
+runs/pong_dqn/
 checkpoints/
+tensorboard_logs/
 
 # Ignore TensorBoard logs
 tensorboard_logs/
