@@ -22,7 +22,7 @@ Thumbs.db
 .clinerules
 
 # Training outputs
-runs/pong_dqn/
+runs/
 checkpoints/
 tensorboard_logs/
 
