@@ -130,9 +130,9 @@ atari-recreation/
 │   ├── wrappers.py          # NoopReset, MaxAndSkip, WarpFrame, FrameStack wrappers + make_env
 │   └── environment.py       # AtariEnvironment class + make_atari_env factory
 │
-├── train.py                 # Training loop with TensorBoard logging and checkpointing
+├── train.py                 # Training loop with TensorBoard logging, checkpointing, and resume support
 ├── requirements.txt         # Python dependencies
-├── .clinerules              # AI coding assistant configuration and constraints
+├── ACKNOWLEDGEMENTS.md      # Credits and references
 ├── .gitignore               # Ignored files (venv, checkpoints, ROM cache)
 └── .venv/                   # Python virtual environment (not committed)
 ```
@@ -207,10 +207,12 @@ python -m venv .venv
 | `--seed` | 42 | Random seed for reproducibility |
 | `--log_dir` | `runs/pong_dqn` | TensorBoard log directory |
 | `--checkpoint_dir` | `checkpoints` | Directory to save model checkpoints |
+| `--resume` | None | Path to a `.pth` checkpoint file to resume training from |
 
-**Example with custom arguments:**
+### Resume from a checkpoint
+
 ```bat
-".\.venv\Scripts\python.exe" train.py --total_steps 1000000 --lr 0.00025 --seed 0
+".\.venv\Scripts\python.exe" train.py --resume checkpoints/dqn_episode_400.pth --total_steps 1000000 --log_dir runs/pong_dqn_run2 --checkpoint_dir checkpoints/run2
 ```
 
 ### Monitor training with TensorBoard
@@ -227,9 +229,11 @@ Then open `http://localhost:6006` in your browser. You will see three live chart
 - **Loss/episode** — average Huber loss per episode; should trend downward
 - **Epsilon/episode** — exploration rate decaying from 1.0 to 0.05
 
+> **Tip:** TensorBoard automatically detects all subdirectories under `runs/` and plots them together with different colours, making it easy to compare runs side by side.
+
 ### Checkpoints
 
-Model weights are saved automatically every 100 episodes to the `checkpoints/` directory as `dqn_episode_N.pth`.
+Model weights are saved automatically every 100 episodes to the `--checkpoint_dir` directory as `dqn_episode_N.pth`. Use separate `--checkpoint_dir` and `--log_dir` values for each run to avoid overwriting previous results.
 
 ---
 
@@ -248,21 +252,23 @@ Model weights are saved automatically every 100 episodes to the `checkpoints/` d
 
 ## Results
 
-*This section will be updated once a full training run completes.*
-
 | Metric | Value |
 |---|---|
-| Total steps trained | — |
-| Final episode reward | — |
-| Best episode reward | — |
-| Training time | — |
-| Hardware | RTX 3070 Ti, 8GB VRAM |
+| Total steps trained | ~700,000 (500k run 1 + resumed run 2) |
+| Best observed episode reward | −7 |
+| Final episode reward (run 1) | −7 at episode 860 |
+| Epsilon at end of run 1 | 0.05 (fully decayed) |
+| Training time | ~5 hours total |
+| Hardware | RTX 3070 Ti, 8GB VRAM, Windows 11 |
+
+**Key observations:**
+- Agent reward improved from −21 (random play) to −7 over ~500k steps
+- Epsilon fully decayed to 0.05 by step ~100,000 — agent operating near-greedily for the majority of training
+- Loss trended consistently downward throughout training, indicating stable learning
+- Reward improvement began around episode 400–500, consistent with replay buffer filling and epsilon decay completing
 
 ---
 
 ## Acknowledgements
 
-- **DeepMind / Mnih et al.** — for the original Nature DQN paper that this project reproduces
-- **Farama Foundation** — for maintaining [Gymnasium](https://gymnasium.farama.org/) and the Atari Learning Environment
-- **PyTorch** — for the deep learning framework
-- **Stella** — the Atari emulator powering ALE
+See [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md).
