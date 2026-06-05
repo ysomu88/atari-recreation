@@ -2,6 +2,8 @@
 
 Train an artificial intelligence to play **Atari Pong** using deep reinforcement learning, just like in the famous Nature DQN paper by DeepMind! The agent learns purely by trial and error—no human help.
 
+![Pong.gif](./docs/Pong.gif)
+
 ---
 
 ## What Does This Do?
@@ -105,7 +107,8 @@ Load your saved model checkpoint file (from previous training run):
 ".\.venv\Scripts\python.exe" eval.py --checkpoint checkpoints/dqn_episode_<latest_modified_partition>.pth --episodes 5
 ```
 
-You'll see:
+
+
 - Each episode's reward score printed to console output  
 - Average performance across multiple games (increase `--episodes` flag for more samples)
 
