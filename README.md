@@ -20,10 +20,10 @@ Think of it like watching someone learn piano by hitting keys randomly at first,
 
 ### Step 1: Install Python Dependencies
 
-Open your **Command Prompt** or **PowerShell**, navigate into this folder:
+Open your **Command Prompt** or **PowerShell**, navigate into the cloned repo directory. For example on Windows, if you cloned to Downloads:
 
 ```bat
-cd C:\Users\Yeshwanth Somu\Documents\PythonScripts\atari-recreation
+cd C:\Users\<USER>\Downloads\atari-recreation
 ```
 
 If you don't have a virtual environment yet, create one first (recommended):
@@ -102,7 +102,7 @@ pip install opencv-python-headless scikit-image pyvirtualdisplay ffmpeg
 **Step 2: Run Evaluation Mode**  
 Load your saved model checkpoint file (from previous training run):
 ```bat
-'.\.venv\Scripts\python.exe' eval.py --checkpoint checkpoints/run1.pth [--episodes 5]
+".\.venv\Scripts\python.exe" eval.py --checkpoint checkpoints/dqn_episode_<latest_modified_partition>.pth --episodes 5
 ```
 
 You'll see:
