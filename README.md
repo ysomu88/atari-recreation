@@ -123,7 +123,7 @@ Load your saved model checkpoint file (from previous training run):
 If you need to pause and resume later, use a saved checkpoint file from your previous training run:
 
 ```bat
-'.\.venv\Scripts\python.exe' train.py --total_steps 1000000 --checkpoint runs/run_ckpt_best.pth
+'.\.venv\Scripts\python.exe' train.py --total_steps 1000000 --resume checkpoints/dqn_episode_400.pth
 ```
 
 ---
