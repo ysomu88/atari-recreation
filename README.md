@@ -1,10 +1,10 @@
 # 🏓 Atari Pong — AI Learning from Scratch
 
-Train an artificial intelligence to play **Atari Pong** using deep reinforcement learning, just like in the famous Nature DQN paper by DeepMind! The agent learns purely by trial and error—no human help.
-
 <div align="center">
   <img src="docs/Pong.gif" alt="Trained DQN agent playing Atari Pong" width="400"/>
   <p><em>Trained DQN agent playing Atari Pong</em></p>
+  
+  [![Build Status](https://img.shields.io/badge/build-passing-brightgreen?style=flat)](https://github.com/ysomu88/atari-recreation/actions)
 </div>
 
 ## What Does This Do?
@@ -34,7 +34,7 @@ If you don't have a virtual environment yet, create one first (recommended):
 **Windows Command Prompt:**
 ```bat
 py -m venv .venv
-.\.venv\Scripts\activate.bat
+\.venv\Scripts\activate.bat
 pip install torch torchvision gymnasium[atari] autorom[accept-rom-license] opencv-python tensorboard
 ```
 
@@ -109,7 +109,6 @@ Load your saved model checkpoint file (from previous training run):
 ```
 
 
-
 - Each episode's reward score printed to console output  
 - Average performance across multiple games (increase `--episodes` flag for more samples)
 
@@ -124,6 +123,3 @@ If you need to pause and resume later, use a saved checkpoint file from your pre
 
 ```bat
 '.\.venv\Scripts\python.exe' train.py --total_steps 1000000 --resume checkpoints/dqn_episode_400.pth
-```
-
----
