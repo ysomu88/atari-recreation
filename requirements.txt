@@ -14,12 +14,9 @@ colorama             # Console coloring output
 
 # Atari Environment (Install after core deps)
 gymnasium[atari]==0.29.1      # Atari wrapper with modern API (not gym!)
-opencv-python>=4.x           # ROM preprocessing
+opencv-python>=4           # ROM preprocessing
 pillow                      # Image handling
 pygame-ce>=2.5.3            # Sound/visual feedback during training
-
-# Environment - Authorom downloads Pong VROMs automatically at first import
-autorom[accept-rom-license]@git+https://github.com/Farama-Foundation/autorom.git @main
 
 ffmpeg           # ROM extraction (needed for older Atari files)  
 python-dateutil  # Timing utilities for env wrappers
