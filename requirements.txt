@@ -1,4 +1,22 @@
-torch==2.0.*
-gymnasium==0.28.0
-numpy==1.26.*
-tensorboard==2.13.0
+# Core Dependencies - Install first: pip install -r requirements.txt
+
+# Deep Learning Frameworks  
+torch>=2.0   # Neural network library
+numpy>=1.26    # Numerical operations
+matplotlib==3.7.4  # Visualization (TensorBoard needs it)
+
+# Model & Training Utilities
+torchinfo==1.8.0     # Network summary
+tensorboard>=2.13    # Experiment logging
+
+importlib-metadata   # Required for torch/torchvision packages on some systems  
+colorama             # Console coloring output
+
+# Atari Environment (Install after core deps)
+gymnasium[atari]==0.29.1      # Atari wrapper with modern API (not gym!)
+opencv-python>=4           # ROM preprocessing
+pillow                      # Image handling
+pygame-ce>=2.5.3            # Sound/visual feedback during training
+
+ffmpeg           # ROM extraction (needed for older Atari files)  
+python-dateutil  # Timing utilities for env wrappers
