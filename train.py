@@ -15,6 +15,11 @@ def train(config):
     agent = DQNAgent(n_actions=env.n_actions, device=device, lr=config['lr'], gamma=config['gamma'], batch_size=config['batch_size'], target_update_freq=config['target_update_freq'])
     
     writer = SummaryWriter(log_dir=config['log_dir'])
+    if config.get('resume'):
+        checkpoint_path = config['resume']
+        agent.online_net.load_state_dict(torch.load(checkpoint_path, map_location=device))
+        agent.target_net.load_state_dict(torch.load(checkpoint_path, map_location=device))
+        print(f"Resumed from checkpoint: {checkpoint_path}")    
     os.makedirs(config['checkpoint_dir'], exist_ok=True)
     
     global_step = 0
@@ -69,7 +74,8 @@ if __name__ == "__main__":
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--log_dir", type=str, default='runs/pong_dqn')
     parser.add_argument("--checkpoint_dir", type=str, default='checkpoints')
-    
+    parser.add_argument("--resume", type=str, default=None, help="Path to checkpoint .pth file to resume from")
+
     args = parser.parse_args()
     config = {
         "env_id": 'ALE/Pong-v5',
@@ -81,6 +87,7 @@ if __name__ == "__main__":
         "target_update_freq": 1000,
         "log_dir": args.log_dir,
         "checkpoint_dir": args.checkpoint_dir,
+        "resume": args.resume,
         "print_every": 10
     }
     
