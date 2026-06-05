@@ -2,9 +2,10 @@
 
 Train an artificial intelligence to play **Atari Pong** using deep reinforcement learning, just like in the famous Nature DQN paper by DeepMind! The agent learns purely by trial and error—no human help.
 
-![Pong.gif](./docs/Pong.gif)
-
----
+<div align="center">
+  <img src="docs/Pong.gif" alt="Trained DQN agent playing Atari Pong" width="400"/>
+  <p><em>Trained DQN agent playing Atari Pong</em></p>
+</div>
 
 ## What Does This Do?
 
